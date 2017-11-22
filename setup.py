@@ -1,15 +1,22 @@
 from setuptools import setup
 
 
+def get_long_description():
+    readme = open('README.rst').read()
+    changelog = open('CHANGES.rst').read()
+    return '\n\n'.join([readme, changelog])
+
+
 setup(
     name='vmprofit',
-    version='0.1.0',
+    version='0.1.1',
     packages=['vmprofit'],
     install_requires=[
         'vmprof',
     ],
     url='https://github.com/lopuhin/vmprofit',
     description='vmprof helpers',
+    long_description=get_long_description(),
     license='MIT license',
     author='Konstantin Lopuhin',
     author_email='kostia.lopuhin@gmail.com',
