@@ -1,11 +1,21 @@
 import inspect
 from functools import wraps
+import platform
 import tempfile
 import time
 import sys
 
 import vmprof
-from vmprof.upload import upload as upload_vmprofile
+from vmshare.service import Service
+
+
+def upload(name, filename, host, auth):
+    service = Service(host, auth)
+    interpname = platform.python_implementation()
+    service.post({Service.FILE_CPU_PROFILE: filename,
+                  Service.FILE_JIT_PROFILE: filename + '.jit',
+                  'argv': name,
+                  'VM': interpname })
 
 
 class profile(object):
@@ -26,12 +36,11 @@ class profile(object):
             vmprof.disable()
         dt = time.time() - self._t0
         self._prof_file.close()
-        stats = vmprof.read_profile(self._prof_file.name)
         sys.stderr.write(
             '{name} took {dt:.4f} s. Compiling and uploading to {web_url}\n'
             .format(name=name, dt=dt, web_url=self.web_url))
-        upload_vmprofile(
-            stats, name, argv=[], host=self.web_url, auth=self.auth)
+        upload(name=name, filename=self._prof_file.name,
+               host=self.web_url, auth=self.auth)
         self._prof_file = None
         self._t0 = None
 
