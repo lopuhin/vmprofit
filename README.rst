@@ -1,6 +1,10 @@
 vmprof it!
 ----------
 
+.. image:: https://img.shields.io/pypi/v/vmprofit.svg
+   :target: https://pypi.python.org/pypi/vmprofit
+   :alt: PyPI Version
+
 These are some unofficial helpers that make using
 `vmprof <https://vmprof.readthedocs.io/en/latest/>`_ more pleasant.
 
