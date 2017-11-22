@@ -9,7 +9,7 @@ def get_long_description():
 
 setup(
     name='vmprofit',
-    version='0.1.1',
+    version='0.1.2',
     packages=['vmprofit'],
     install_requires=[
         'vmprof',
