@@ -1,4 +1,4 @@
-VMprof it!
+vmprof it!
 ----------
 
 These are some unofficial helpers that make using
@@ -19,6 +19,6 @@ or::
         do_stuff()
 
 
-``vmprofit.profile`` accepts a number of arguments, by default it just
-uploads profile result of each run to https://vmprof.com
-(this WILL change in the future to be more explicit).
+``vmprofit.profile`` accepts ``web_url`` and ``auth`` arguments,
+by default it uploads profile result of each run to https://vmprof.com
+(this **WILL** change in the future to be more explicit).
